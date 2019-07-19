@@ -82,7 +82,8 @@ export default class CountryPicker extends Component {
     renderFilter: PropTypes.func,
     showCallingCode: PropTypes.bool,
     filterOptions: PropTypes.object,
-    showCountryNameWithFlag: PropTypes.bool
+    showCountryNameWithFlag: PropTypes.bool,
+    modalVisible: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -93,7 +94,8 @@ export default class CountryPicker extends Component {
     filterPlaceholder: 'Filter',
     autoFocusFilter: true,
     transparent: false,
-    animationType: 'none'
+    animationType: 'none',
+    modalVisible: 'false',
   }
 
   static renderEmojiFlag(cca2, emojiStyle) {
@@ -166,7 +168,7 @@ export default class CountryPicker extends Component {
       .map(c => c[0])
 
     this.state = {
-      modalVisible: false,
+      modalVisible: this.props.modalVisible,
       cca2List: countryList,
       flatListMap: countryList.map(n => ({ key: n })),
       dataSource: countryList,
@@ -213,6 +215,10 @@ export default class CountryPicker extends Component {
       this.setState({
         cca2List: nextProps.countryList,
         dataSource: nextProps.countryList
+      })
+    } if (nextProps.modalVisible !== this.props.modalVisible) {
+      this.setState({
+        modalVisible: nextProps.modalVisible,
       })
     }
   }
