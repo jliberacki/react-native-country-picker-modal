@@ -41,8 +41,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 30,
-    // width: 30,
-    // height: 30,
+    width: 25,
+    height: 19,
     borderWidth: 1 / PixelRatio.get(),
     borderColor: 'transparent',
     backgroundColor: 'transparent'
